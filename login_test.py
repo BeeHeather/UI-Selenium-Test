@@ -1,12 +1,12 @@
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service as ChromeService
-from selenium.webdriver.common.by import By
 from webdriver_manager.chrome import ChromeDriverManager
+from selenium.webdriver.common.by import By
 
+driver = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install()))
 URL = 'https://www.saucedemo.com/'
 LOGIN = 'standard_user'
 PASSWORD = 'secret_sauce'
-
 
 driver = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install()))
 driver.get(URL)
