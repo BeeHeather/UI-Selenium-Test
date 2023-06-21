@@ -3,19 +3,43 @@ from selenium.webdriver.chrome.service import Service as ChromeService
 from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.common.by import By
 
-driver = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install()))
+# defined parameters
 URL = 'https://www.saucedemo.com/'
 LOGIN = 'standard_user'
 PASSWORD = 'secret_sauce'
 
-driver = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install()))
-driver.get(URL)
+def get_driver():
+    driver = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install()))
+    return driver
 
-input_login = driver.find_element(By.ID, "user-name")
-input_password = driver.find_element(By.ID, "password")
-start_button = driver.find_element(By.ID, "login-button")
 
-input_login.send_keys(LOGIN)
-input_password.send_keys(PASSWORD)
-start_button.click()
-pass
+def open_page(driver, URL):
+    driver.get(URL)
+
+
+def get_element_by_id(driver, id):
+    element = driver.find_element(By.ID, id)
+    return element
+
+
+def element_send_keys(driver, id, type):
+    element = get_element_by_id(driver, id)
+    element.send_keys(type)
+
+
+def button_click(driver, id):
+    button = get_element_by_id(driver, id)
+    button.click()
+
+
+def login(driver, name, password, name_id):
+    get_element_by_id(driver, name_id)
+    get_element_by_id(driver, 'password')
+    element_send_keys(driver, name_id, name)
+    element_send_keys(driver, 'password', password)
+
+
+driver = get_driver()
+open_page(driver, URL)
+login(driver=driver, name=LOGIN, password=PASSWORD, name_id='user-name')
+button_click(driver, 'login-button')
