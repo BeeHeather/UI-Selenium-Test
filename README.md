@@ -1,9 +1,9 @@
 # UI-Selenium-Test
 Final assignment (Цифровая кафедра МГТУ им. Баумана)
 
-We tested site (https://www.saucedemo.com/) with Python and Selenium
+We tested login on site (https://www.saucedemo.com/) with Python and Selenium.
 
-For run test use 
+For run test use:
 
 
 ```
