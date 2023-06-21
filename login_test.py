@@ -43,3 +43,5 @@ driver = get_driver()
 open_page(driver, URL)
 login(driver=driver, name=LOGIN, password=PASSWORD, name_id='user-name')
 button_click(driver, 'login-button')
+
+driver.quit()
